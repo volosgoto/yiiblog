@@ -6,12 +6,21 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+//            'layout' => 'admin',
+        ],
+    ],
+
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'TwPAdzzERZZoc8FIwwx3PFbk4eS6buow',
             'baseUrl' => '',
         ],
+
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -46,7 +55,6 @@ $config = [
             'rules' => [
             ],
         ],
-
     ],
     'params' => $params,
 ];
