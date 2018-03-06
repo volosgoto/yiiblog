@@ -80,4 +80,11 @@ class Article extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Comment::className(), ['article_id' => 'id']);
     }
+
+    public function saveImage ($filename){
+        $this->image = $filename;
+        return $this->save(false);
+
+    }
+
 }
