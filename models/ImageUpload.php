@@ -1,19 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: andrey
- * Date: 06.03.18
- * Time: 11:02
- */
 
 namespace app\models;
-
 
 use Yii;
 use yii\base\Model;
 use yii\web\UploadedFile;
 
-class ImageUpload extends Model {
+class ImageUpload extends Model{
 
     public $image;
 
@@ -25,23 +18,51 @@ class ImageUpload extends Model {
         ];
     }
 
-    public function uploadFile(UploadedFile $file, $currentImage){
-        if ($this->validate()) {
-            if (file_exists($this->getFolder() . $currentImage)) {
-                unlink($this->getFolder() . $currentImage);
-            }
 
-            $fileName = $this->generateFilename();
-            $file->saveAs($this->getFolder() . $fileName);
-            return $fileName;
+    public function uploadFile(UploadedFile $file, $currentImage)
+    {
+        $this->image = $file;
+
+        if($this->validate())
+        {
+            $this->deleteCurrentImage($currentImage);
+            return $this->saveImage();
         }
+
     }
 
-    private function getFolder() {
+    private function getFolder()
+    {
         return Yii::getAlias('@web') . 'uploads/';
     }
 
-    private function generateFilename() {
-        return strtolower(md5(uniqid($this->image->baseName))) . '.' . $this->image->extension;
+    private function generateFilename()
+    {
+        return strtolower(md5(uniqid($this->image->baseName)) . '.' . $this->image->extension);
+    }
+
+    public function deleteCurrentImage($currentImage)
+    {
+        if($this->fileExists($currentImage))
+        {
+            unlink($this->getFolder() . $currentImage);
+        }
+    }
+
+    public function fileExists($currentImage)
+    {
+        if(!empty($currentImage) && $currentImage != null)
+        {
+            return file_exists($this->getFolder() . $currentImage);
+        }
+    }
+
+    public function saveImage()
+    {
+        $filename = $this->generateFilename();
+
+        $this->image->saveAs($this->getFolder() . $filename);
+
+        return $filename;
     }
 }
