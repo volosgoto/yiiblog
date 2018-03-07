@@ -128,19 +128,20 @@ class ArticleController extends Controller
     }
 
     public function actionSetImage ($id) {
-
         $model = new ImageUpload;
 
-        if (Yii::$app->request->isPost){
-
+        if (Yii::$app->request->isPost)
+        {
             $article = $this->findModel($id);
             $file = UploadedFile::getInstance($model, 'image');
-//            var_dump(strtolower(md5(uniqid($file->baseName))) . '.' . $file->extension); die;
 
-            $article->saveImage($model->uploadFile($file, $article->image));
+            if($article->saveImage($model->uploadFile($file, $article->image)))
+            {
+                return $this->redirect(['view', 'id'=>$article->id]);
+            }
         }
 
-        return $this->render('image', compact('model'));
+        return $this->render('image', ['model'=>$model]);
     }
 
 

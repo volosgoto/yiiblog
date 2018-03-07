@@ -41,6 +41,16 @@ class ImageUpload extends Model{
         return strtolower(md5(uniqid($this->image->baseName)) . '.' . $this->image->extension);
     }
 
+
+    public function saveImage()
+    {
+        $filename = $this->generateFilename();
+
+        $this->image->saveAs($this->getFolder() . $filename);
+
+        return $filename;
+    }
+
     public function deleteCurrentImage($currentImage)
     {
         if($this->fileExists($currentImage))
@@ -55,14 +65,5 @@ class ImageUpload extends Model{
         {
             return file_exists($this->getFolder() . $currentImage);
         }
-    }
-
-    public function saveImage()
-    {
-        $filename = $this->generateFilename();
-
-        $this->image->saveAs($this->getFolder() . $filename);
-
-        return $filename;
     }
 }
