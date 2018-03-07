@@ -49,6 +49,14 @@ class Article extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public function saveArticle()
+    {
+//        $this->user_id = Yii::$app->user->id;
+        return $this->save(true);
+    }
+
+
     public function attributeLabels()
     {
         return [
