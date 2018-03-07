@@ -19,51 +19,58 @@ class ImageUpload extends Model{
     }
 
 
-    public function uploadFile(UploadedFile $file, $currentImage)
+    public function uploadFile(UploadedFile $file)
     {
-        $this->image = $file;
+        $fileName = strtolower(md5(uniqid($file->baseName)) . '.' . $file->extension);
 
-        if($this->validate())
-        {
-            $this->deleteCurrentImage($currentImage);
-            return $this->saveImage();
-        }
+        var_dump($fileName);
+        $file->saveAs(Yii::getAlias('@web') . 'uploads/' . $fileName);
+
+
+        return $fileName;
+        //        $this->image = $file;
+//
+//        if($this->validate())
+//        {
+//            $this->deleteCurrentImage($currentImage);
+//            return $this->saveImage();
+//        }
 
     }
 
     private function getFolder()
     {
-        return Yii::getAlias('@web') . 'uploads/';
+//        return Yii::getAlias('@web') . 'uploads/';
     }
 
     private function generateFilename()
     {
-        return strtolower(md5(uniqid($this->image->baseName)) . '.' . $this->image->extension);
+//        return strtolower(md5(uniqid($this->image->baseName)) . '.' . $this->image->extension);
     }
 
 
     public function saveImage()
     {
-        $filename = $this->generateFilename();
-
-        $this->image->saveAs($this->getFolder() . $filename);
-
-        return $filename;
+//        $filename = $this->generateFilename();
+//
+//        $this->image->saveAs($this->getFolder() . $filename);
+//
+//        return $filename;
     }
 
     public function deleteCurrentImage($currentImage)
     {
-        if($this->fileExists($currentImage))
-        {
-            unlink($this->getFolder() . $currentImage);
-        }
+//        if($this->fileExists($currentImage))
+//        {
+//            unlink($this->getFolder() . $currentImage);
+//        }
     }
 
     public function fileExists($currentImage)
     {
-        if(!empty($currentImage) && $currentImage != null)
-        {
-            return file_exists($this->getFolder() . $currentImage);
-        }
+//        if(!empty($currentImage) && $currentImage != null)
+//        {
+//            return file_exists($this->getFolder() . $currentImage);
+//        }
     }
 }
