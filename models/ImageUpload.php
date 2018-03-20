@@ -21,14 +21,31 @@ class ImageUpload extends Model{
 
     public function uploadFile(UploadedFile $file, $currentImage)
     {
+//        die($currentImage);
+        $this->image = $file;
 
-        die($currentImage);
-        $fileName = strtolower(md5(uniqid($file->baseName)) . '.' . $file->extension);
+//        if (file_exists(Yii::getAlias('@web') . 'uploads/' . $currentImage)) {
+//            unlink(Yii::getAlias('@web') . 'uploads/' . $currentImage);
+//        }
+//
+//        $fileName = strtolower(md5(uniqid($file->baseName)) . '.' . $file->extension);
+//
+//        $file->saveAs(Yii::getAlias('@web') . 'uploads/' . $fileName);
+//
+//
+//        return $fileName;
+        if  ($this->validate()){
+            if (file_exists(Yii::getAlias('@web') . 'uploads/' . $currentImage)) {
+                unlink(Yii::getAlias('@web') . 'uploads/' . $currentImage);
+            }
 
-        $file->saveAs(Yii::getAlias('@web') . 'uploads/' . $fileName);
+            $fileName = strtolower(md5(uniqid($file->baseName)) . '.' . $file->extension);
+
+            $file->saveAs(Yii::getAlias('@web') . 'uploads/' . $fileName);
 
 
-        return $fileName;
+            return $fileName;
+        }
 
     }
 
