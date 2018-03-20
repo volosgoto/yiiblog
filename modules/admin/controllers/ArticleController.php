@@ -125,12 +125,9 @@ class ArticleController extends Controller
         if (Yii::$app->request->isPost) {
             $article = $this->findModel($id);
             $file = UploadedFile::getInstance($model, 'image');
-            var_dump(md5(uniqid($file->baseName)) . '.' . $file->extension); die;
-
             $article->saveImage($model->uploadFile($file));
 
         }
-//
         return $this->render('image', compact('model'));
     }
 
