@@ -19,22 +19,16 @@ class ImageUpload extends Model{
     }
 
 
-    public function uploadFile(UploadedFile $file)
+    public function uploadFile(UploadedFile $file, $currentImage)
     {
+
+        die($currentImage);
         $fileName = strtolower(md5(uniqid($file->baseName)) . '.' . $file->extension);
 
-//        var_dump($fileName);
         $file->saveAs(Yii::getAlias('@web') . 'uploads/' . $fileName);
 
 
         return $fileName;
-        //        $this->image = $file;
-//
-//        if($this->validate())
-//        {
-//            $this->deleteCurrentImage($currentImage);
-//            return $this->saveImage();
-//        }
 
     }
 
