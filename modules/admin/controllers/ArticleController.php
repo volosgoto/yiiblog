@@ -118,36 +118,28 @@ class ArticleController extends Controller
      * @return Article the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
+
+    public function actionSetImage ($id) {
+        $model = new ImageUpload;
+
+        if (Yii::$app->request->isPost) {
+            $article = $this->findModel($id);
+            $file = UploadedFile::getInstance($model, 'image');
+            var_dump(md5(uniqid($file->baseName)) . '.' . $file->extension); die;
+
+            $article->saveImage($model->uploadFile($file));
+
+        }
+//
+        return $this->render('image', compact('model'));
+    }
+
+
     protected function findModel($id)
     {
         if (($model = Article::findOne($id)) !== null) {
             return $model;
         }
-
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    public function actionSetImage ($id) {
-        $model = new ImageUpload;
-
-        if (Yii::$app->request->isPost)
-        {
-            $article = $this->findModel($id);
-            $file = UploadedFile::getInstance($model, 'image');
-            $article->saveImage($model->uploadFile($file));
-
-
-            //            $file = UploadedFile::getInstance($model, 'image');
-//
-//            if($article->saveImage($model->uploadFile($file, $article->image)))
-//            {
-//                return $this->redirect(['view', 'id'=>$article->id]);
-//            }
-        }
-//
-//        return $this->render('image', ['model'=>$model]);
-        return $this->render('image', compact('model'));
-    }
-
-
 }
