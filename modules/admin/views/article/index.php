@@ -38,11 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Изображение',
                 'format' => 'html',
                 'value' => function($data){
-        debug ($data->getImage());
-//                    return Html::img(Yii::getAlias('@web').'/uploads/' . $data->getImage(), ['width'=>200]);
-//                    return Html::img($data->getImage(), ['width'=>200]);
                     return Html::img($data->getImage(), ['width'=>200]);
-//                    return Html::img('@web/uploads/' . $data->getImage(), ['width'=>200]);
                 }
             ],
             //'image',

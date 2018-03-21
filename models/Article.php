@@ -41,7 +41,7 @@ class Article extends \yii\db\ActiveRecord
         return [
             [['title'], 'required'],
             [['title','description','content'], 'string'],
-            [['date'], 'date', 'format'=>'Y-m-d'],
+            [['date'], 'date', 'format'=>'php:Y-m-d'],
             [['date'], 'default', 'value' => date('Y-m-d')],
             [['title'], 'string', 'max' => 255],
             [['category_id'], 'number']
@@ -70,7 +70,7 @@ class Article extends \yii\db\ActiveRecord
     public function saveArticle()
     {
         $this->user_id = Yii::$app->user->id;
-        return $this->save(false);
+        return $this->save();
     }
 
     public function saveImage($filename)
