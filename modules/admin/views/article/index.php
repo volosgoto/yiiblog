@@ -19,7 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Article', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php
-debug($dataProvider);
 ?>
 
     <?= GridView::widget([
@@ -33,14 +32,19 @@ debug($dataProvider);
             'description:ntext',
             'content:ntext',
             'date',
-            'image',
-//            [
-//                'format' => 'html',
-//                'label' => 'Image',
-//                'value' => function($data){
+//            'image',
+            [
+                'attribute' => 'image',
+                'label' => 'Изображение',
+                'format' => 'html',
+                'value' => function($data){
+        debug ($data->getImage());
+//                    return Html::img(Yii::getAlias('@web').'/uploads/' . $data->getImage(), ['width'=>200]);
 //                    return Html::img($data->getImage(), ['width'=>200]);
-//                }
-//            ],
+                    return Html::img($data->getImage(), ['width'=>200]);
+//                    return Html::img('@web/uploads/' . $data->getImage(), ['width'=>200]);
+                }
+            ],
             //'image',
             //'viewed',
             //'user_id',

@@ -41,11 +41,14 @@ class ArticleController extends Controller
     public function actionIndex()
     {
         $searchModel = new ArticleSerch();
+//        $article = new Article();
+
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+//            'article' => $article,
         ]);
     }
 

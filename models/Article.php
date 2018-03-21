@@ -41,7 +41,7 @@ class Article extends \yii\db\ActiveRecord
         return [
             [['title'], 'required'],
             [['title','description','content'], 'string'],
-            [['date'], 'date', 'format'=>'php:Y-m-d'],
+            [['date'], 'date', 'format'=>'Y-m-d'],
             [['date'], 'default', 'value' => date('Y-m-d')],
             [['title'], 'string', 'max' => 255],
             [['category_id'], 'number']
@@ -81,7 +81,8 @@ class Article extends \yii\db\ActiveRecord
 
     public function getImage()
     {
-        return ($this->image) ? '/uploads/' . $this->image : '/no-image.png';
+        return ($this->image) ? '/uploads/' . $this->image : '/images/no-image.png';
+//        return ($this->image) ? $this->image : '/no-image.png';
     }
 
     public function deleteImage()
