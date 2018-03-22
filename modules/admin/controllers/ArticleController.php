@@ -178,10 +178,22 @@ class ArticleController extends Controller
 //            '2' => 'Категория 2',
 //        ];
         $categories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
-//        var_dump($categories); die;
+
+        if (Yii::$app->request->isPost) {
+            $category = Yii::$app->request->post('category');
+
+            if ($article->saveCategory($category)) {
+
+                return $this->redirect(['view', 'id' => $article->id]);
+            }
+        }
+
 
         return $this->render('category', compact('article', 'selectedCategory', 'categories'));
     }
+
+
+
 
 
     public function actionSetTags($id)
