@@ -20,7 +20,16 @@ class Category extends \yii\db\ActiveRecord
         return 'category';
     }
 
+
+
+    public function getArticles()
+    {
+        return $this->hasMany(Article::className(), ['category_id' => 'id']);
+    }
+
+
     /**
+     *
      * @inheritdoc
      */
     public function rules()
