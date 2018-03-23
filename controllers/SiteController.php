@@ -64,57 +64,79 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $data = Article::getAll(5);
-        $popular = Article::getPopular();
-        $recent = Article::getRecent();
-        $categories = Category::getAll();
-        
-        return $this->render('index',[
-            'articles'=>$data['articles'],
-            'pagination'=>$data['pagination'],
-            'popular'=>$popular,
-            'recent'=>$recent,
-            'categories'=>$categories
-        ]);
-    }
-    
-    public function actionView($id)
-    {
-        $article = Article::findOne($id);
-        $popular = Article::getPopular();
-        $recent = Article::getRecent();
-        $categories = Category::getAll();
-        $comments = $article->getArticleComments();
-        $commentForm = new CommentForm();
+//        $data = Article::getAll(5);
+//        $popular = Article::getPopular();
+//        $recent = Article::getRecent();
+//        $categories = Category::getAll();
+//
+//        return $this->render('index',[
+//            'articles'=>$data['articles'],
+//            'pagination'=>$data['pagination'],
+//            'popular'=>$popular,
+//            'recent'=>$recent,
+//            'categories'=>$categories
+//        ]);
 
-        $article->viewedCounter();
-        
-        return $this->render('single',[
-            'article'=>$article,
-            'popular'=>$popular,
-            'recent'=>$recent,
-            'categories'=>$categories,
-            'comments'=>$comments,
-            'commentForm'=>$commentForm
-        ]);
+        return $this->render('index');
     }
-    
-    public function actionCategory($id)
-    {
 
-        $data = Category::getArticlesByCategory($id);
-        $popular = Article::getPopular();
-        $recent = Article::getRecent();
-        $categories = Category::getAll();
-        
-        return $this->render('category',[
-            'articles'=>$data['articles'],
-            'pagination'=>$data['pagination'],
-            'popular'=>$popular,
-            'recent'=>$recent,
-            'categories'=>$categories
-        ]);
+
+    public function actionAbout(){
+        return $this->render('about');
     }
+
+
+//    public function actionView($id)
+//    {
+//        $article = Article::findOne($id);
+//        $popular = Article::getPopular();
+//        $recent = Article::getRecent();
+//        $categories = Category::getAll();
+//        $comments = $article->getArticleComments();
+//        $commentForm = new CommentForm();
+//
+//        $article->viewedCounter();
+//
+//        return $this->render('single',[
+//            'article'=>$article,
+//            'popular'=>$popular,
+//            'recent'=>$recent,
+//            'categories'=>$categories,
+//            'comments'=>$comments,
+//            'commentForm'=>$commentForm
+//        ]);
+        //return $this->render('single');
+//    }
+
+
+
+    public function actionView() {
+       return $this->render('single');
+    }
+
+
+    public function actionCategory() {
+        return $this->render('category');
+    }
+
+
+    
+//    public function actionCategory($id)
+//    {
+//
+//        $data = Category::getArticlesByCategory($id);
+//        $popular = Article::getPopular();
+//        $recent = Article::getRecent();
+//        $categories = Category::getAll();
+//
+//        return $this->render('category',[
+//            'articles'=>$data['articles'],
+//            'pagination'=>$data['pagination'],
+//            'popular'=>$popular,
+//            'recent'=>$recent,
+//            'categories'=>$categories
+//        ]);
+//    }
 
     public function actionComment($id)
     {
