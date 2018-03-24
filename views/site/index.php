@@ -1,5 +1,7 @@
 <?php
-    use yii\widgets\LinkPager;
+
+use yii\widgets\LinkPager;
+
 ?>
 
 <!--main content start-->
@@ -8,7 +10,7 @@
         <div class="row">
             <div class="col-md-8">
 
-                <?php foreach ($articles as $article):?>
+                <?php foreach ($articles as $article): ?>
                     <article class="post">
                         <div class="post-thumb">
                             <a href="blog.html"><img src="<?php echo $article->getImage() ?>" alt=""></a>
@@ -35,28 +37,23 @@
                                 </div>
                             </div>
                             <div class="social-share">
-                                <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> <?php echo $article->getDate() ?></span>
+                                <span class="social-share-title pull-left text-capitalize">By <a
+                                            href="#">Rubel</a> <?php echo $article->getDate() ?></span>
                                 <ul class="text-center pull-right">
-                                    <li><a class="s-facebook" href="#"><i class=""></i>Просмотров: </a></li> <?php echo (int) $article->viewed ?>
+                                    <li><a class="s-facebook" href="#"><i class=""></i>Просмотров: </a>
+                                    </li> <?php echo (int)$article->viewed ?>
                                 </ul>
                             </div>
                         </div>
                     </article>
                 <?php endforeach; ?>
-                
 
 
-<!--                <ul class="pagination">-->
-<!--                    <li class="active"><a href="#">1</a></li>-->
-<!--                    <li><a href="#">2</a></li>-->
-<!--                    <li><a href="#">3</a></li>-->
-<!--                    <li><a href="#">4</a></li>-->
-<!--                    <li><a href="#"><i class=""></i>>></a></li>-->
-<!--                </ul>-->
+
                 <?php
-                    echo LinkPager::widget([
-                        'pagination' => $pagination,
-                    ]);
+                echo LinkPager::widget([
+                    'pagination' => $pagination,
+                ]);
                 ?>
             </div>
 
@@ -64,7 +61,7 @@
                 <div class="primary-sidebar">
 
                     <aside class="widget">
-                        <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>
+                        <h3 class="widget-title text-uppercase text-center">Популярные</Gjgjekzhysq></h3>
 
                         <?php foreach ($popular as $article): ?>
                             <div class="popular-post">
@@ -85,9 +82,8 @@
                     </aside>
 
 
-
                     <aside class="widget pos-padding">
-                        <h3 class="widget-title text-uppercase text-center">Recent Posts</h3>
+                        <h3 class="widget-title text-uppercase text-center">Последние</h3>
 
                         <?php foreach ($recent as $article): ?>
                             <div class="thumb-latest-posts">
@@ -95,7 +91,8 @@
 
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="#" class="popular-img"><img src="<?php echo $article->getImage() ?>" alt="">
+                                        <a href="#" class="popular-img"><img src="<?php echo $article->getImage() ?>"
+                                                                             alt="">
                                             <div class="p-overlay"></div>
                                         </a>
                                     </div>
@@ -109,13 +106,14 @@
                     </aside>
 
                     <aside class="widget border pos-padding">
-                        <h3 class="widget-title text-uppercase text-center">Categories</h3>
+                        <h3 class="widget-title text-uppercase text-center">Категории</h3>
                         <ul>
                             <?php foreach ($categories as $category): ?>
-                            <li>
-                                <a href="#"><?php echo $category->title ?></a>
-                                <span class="post-count pull-right"> (<?php echo $category->getArticlesCount() ?>)</span>
-                            </li>
+                                <li>
+                                    <a href="#"><?php echo $category->title ?></a>
+                                    <span class="post-count pull-right"> (<?php echo $category->getArticlesCount() ?>
+                                        )</span>
+                                </li>
                             <?php endforeach; ?>
                         </ul>
                     </aside>

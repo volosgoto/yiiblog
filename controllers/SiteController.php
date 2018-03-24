@@ -13,13 +13,11 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class SiteController extends Controller
-{
+class SiteController extends Controller {
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -44,8 +42,7 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function actions()
-    {
+    public function actions() {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -62,19 +59,18 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $data = Article::getAll(1);
         $popular = Article::getPopular();
         $recent = Article::getRecent();
         $categories = Category::getAll();
 
-        return $this->render('index',[
-            'articles'=>$data['articles'],
-            'pagination'=>$data['pagination'],
-            'popular'=>$popular,
-            'recent'=>$recent,
-            'categories'=>$categories
+        return $this->render('index', [
+            'articles' => $data['articles'],
+            'pagination' => $data['pagination'],
+            'popular' => $popular,
+            'recent' => $recent,
+            'categories' => $categories
         ]);
 
 
@@ -95,7 +91,7 @@ class SiteController extends Controller
     }
 
 
-    public function actionAbout(){
+    public function actionAbout() {
         return $this->render('about');
     }
 
@@ -119,13 +115,12 @@ class SiteController extends Controller
 //            'comments'=>$comments,
 //            'commentForm'=>$commentForm
 //        ]);
-        //return $this->render('single');
+    //return $this->render('single');
 //    }
 
 
-
     public function actionView() {
-       return $this->render('single');
+        return $this->render('single');
     }
 
 
@@ -134,7 +129,7 @@ class SiteController extends Controller
     }
 
 
-    
+
 //    public function actionCategory($id)
 //    {
 //
@@ -152,17 +147,14 @@ class SiteController extends Controller
 //        ]);
 //    }
 
-    public function actionComment($id)
-    {
+    public function actionComment($id) {
         $model = new CommentForm();
-        
-        if(Yii::$app->request->isPost)
-        {
+
+        if (Yii::$app->request->isPost) {
             $model->load(Yii::$app->request->post());
-            if($model->saveComment($id))
-            {
+            if ($model->saveComment($id)) {
                 Yii::$app->getSession()->setFlash('comment', 'Your comment will be added soon!');
-                return $this->redirect(['site/view','id'=>$id]);
+                return $this->redirect(['site/view', 'id' => $id]);
             }
         }
     }
