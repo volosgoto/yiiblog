@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             <div class="social-share">
-                                <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> Дата: <?php echo $article->date ?></span>
+                                <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> <?php echo $article->getDate() ?></span>
                                 <ul class="text-center pull-right">
                                     <li><a class="s-facebook" href="#"><i class=""></i>Просмотров: </a></li> <?php echo (int) $article->viewed ?>
                                 </ul>
@@ -77,7 +77,7 @@
 
                                 <div class="p-content">
                                     <a href="#" class="text-uppercase"><?php echo $article->title ?></a>
-                                    <span class="p-date"><?php echo $article->date ?></span>
+                                    <span class="p-date"><?php echo $article->getDate() ?></span>
 
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="p-content">
                                         <a href="#" class="text-uppercase"><?php echo $article->title ?></a>
-                                        <span class="p-date"><?php echo $article->date ?></span>
+                                        <span class="p-date"><?php echo $article->getDate() ?></span>
                                     </div>
                                 </div>
                             </div>
