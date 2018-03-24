@@ -114,7 +114,7 @@
                             <?php foreach ($categories as $category): ?>
                             <li>
                                 <a href="#"><?php echo $category->title ?></a>
-                                <span class="post-count pull-right"> (<?php echo $category->getArticles()->count() ?>)</span>
+                                <span class="post-count pull-right"> (<?php echo $category->getArticlesCount() ?>)</span>
                             </li>
                             <?php endforeach; ?>
                         </ul>

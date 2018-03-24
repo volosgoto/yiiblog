@@ -64,38 +64,34 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-//        $data = Article::getAll(5);
-//        $popular = Article::getPopular();
-//        $recent = Article::getRecent();
-//        $categories = Category::getAll();
+        $data = Article::getAll(1);
+        $popular = Article::getPopular();
+        $recent = Article::getRecent();
+        $categories = Category::getAll();
+
+        return $this->render('index',[
+            'articles'=>$data['articles'],
+            'pagination'=>$data['pagination'],
+            'popular'=>$popular,
+            'recent'=>$recent,
+            'categories'=>$categories
+        ]);
+
+
+//        $popular = Article::find()->orderBy('viewed desc')->limit('3')->all();
+//        $recent = Article::find()->orderBy('date asc')->limit('4')->all();
 //
-//        return $this->render('index',[
-//            'articles'=>$data['articles'],
-//            'pagination'=>$data['pagination'],
-//            'popular'=>$popular,
-//            'recent'=>$recent,
-//            'categories'=>$categories
-//        ]);
-
-        $query = Article::find();
-        $count = $query->count();
-        $pagination = new Pagination(['totalCount' => $count, 'pageSize' => 1]);
-        $articles = $query->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
-
-        $popular = Article::find()->orderBy('viewed desc')->limit('3')->all();
-        $recent = Article::find()->orderBy('date asc')->limit('4')->all();
-
-        $categories = Category::find()->all();
-
-        return $this->render('index', compact(
-            'articles',
-            'pagination',
-            'popular',
-            'recent',
-            'categories'
-        ));
+//        $categories = Category::find()->all();
+//
+//        return $this->render('index', compact(
+//            'articles',
+//            'pagination',
+//            'popular',
+//            'recent',
+//            'categories',
+//            'data'
+//
+//        ));
     }
 
 

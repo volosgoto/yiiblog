@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\Article;
 
 /**
  * This is the model class for table "category".
@@ -48,5 +49,14 @@ class Category extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
         ];
+    }
+
+    public function getArticlesCount() {
+        return $this->getArticles()->count();
+
+    }
+
+    public static function getAll() {
+        return Category::find()->all();
     }
 }
