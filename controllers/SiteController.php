@@ -77,7 +77,17 @@ class SiteController extends Controller
 //            'categories'=>$categories
 //        ]);
 
-        return $this->render('index');
+
+        $query = Article::find();
+
+        $count = $query->count();
+
+        $pagination = new Pagination(['totalCount' => $count, 'pageSize' => 1]);
+        $articles = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        return $this->render('index', compact('articles', 'pagination'));
     }
 
 

@@ -8,7 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-use app\assets\PublicAsset;
+use app\assets\AdminAsset;
 
 AppAsset::register($this);
 //PublicAsset::register($this);
@@ -54,6 +54,8 @@ AppAsset::register($this);
                     <ul class="nav navbar-nav text-uppercase">
                         <li><a href="#">Login</a></li>
                         <li><a href="#">Register</a></li>
+                        <li><?php echo Html::a('Admin', ['admin/default']) ?></li>
+
                     </ul>
                 </div>
 
@@ -186,8 +188,7 @@ AppAsset::register($this);
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="text-center">&copy; 2015 <a href="#">Treasure PRO, </a> Built with <i
-                                class="fa fa-heart"></i> by <a href="#">Rahim</a>
+                    <div class="text-center">&copy; 2018 by <a href="#">Andrey</a>
                     </div>
                 </div>
             </div>
