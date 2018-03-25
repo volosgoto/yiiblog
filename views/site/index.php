@@ -30,7 +30,7 @@ use yii\helpers\Url;
                             </header>
                             <div class="entry-content">
                                 <p>
-                                    <?php echo $article->description ?>
+                                    <?php echo $article->content ?>
                                 </p>
 
                                 <div class="btn-continue-reading text-center text-uppercase">
@@ -57,7 +57,7 @@ use yii\helpers\Url;
                 ]);
                 ?>
             </div>
-
+<!--right panel-->
             <div class="col-md-4" data-sticky_column>
                 <div class="primary-sidebar">
 
@@ -120,6 +120,7 @@ use yii\helpers\Url;
                     </aside>
                 </div>
             </div>
+<!--            end of right panrel-->
         </div>
     </div>
 </div>
