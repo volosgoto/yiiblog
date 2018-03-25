@@ -1,8 +1,6 @@
 <?php
-
-use yii\widgets\LinkPager;
-use yii\helpers\Url;
-
+    use yii\widgets\LinkPager;
+    use yii\helpers\Url;
 ?>
 
 <!--main content start-->
@@ -52,75 +50,19 @@ use yii\helpers\Url;
 
 
                 <?php
-                echo LinkPager::widget([
-                    'pagination' => $pagination,
-                ]);
+                    echo LinkPager::widget([
+                        'pagination' => $pagination,
+                    ]);
                 ?>
             </div>
-<!--right panel-->
-            <div class="col-md-4" data-sticky_column>
-                <div class="primary-sidebar">
-
-                    <aside class="widget">
-                        <h3 class="widget-title text-uppercase text-center">Популярные</Gjgjekzhysq></h3>
-
-                        <?php foreach ($popular as $article): ?>
-                            <div class="popular-post">
 
 
-                                <a href="#" class="popular-img"><img src="<?php echo $article->getImage() ?>" alt="">
+            <?php echo $this->render('/partials/sidebar', [
+                'popular' => $popular,
+                'recent' => $recent,
+                'categories' => $categories
+            ]) ?>
 
-                                    <div class="p-overlay"></div>
-                                </a>
-
-                                <div class="p-content">
-                                    <a href="#" class="text-uppercase"><?php echo $article->title ?></a>
-                                    <span class="p-date"><?php echo $article->getDate() ?></span>
-
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </aside>
-
-
-                    <aside class="widget pos-padding">
-                        <h3 class="widget-title text-uppercase text-center">Последние</h3>
-
-                        <?php foreach ($recent as $article): ?>
-                            <div class="thumb-latest-posts">
-
-
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#" class="popular-img"><img src="<?php echo $article->getImage() ?>"
-                                                                             alt="">
-                                            <div class="p-overlay"></div>
-                                        </a>
-                                    </div>
-                                    <div class="p-content">
-                                        <a href="#" class="text-uppercase"><?php echo $article->title ?></a>
-                                        <span class="p-date"><?php echo $article->getDate() ?></span>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </aside>
-
-                    <aside class="widget border pos-padding">
-                        <h3 class="widget-title text-uppercase text-center">Категории</h3>
-                        <ul>
-                            <?php foreach ($categories as $category): ?>
-                                <li>
-                                    <a href="#"><?php echo $category->title ?></a>
-                                    <span class="post-count pull-right"> (<?php echo $category->getArticlesCount() ?>
-                                        )</span>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </aside>
-                </div>
-            </div>
-<!--            end of right panrel-->
         </div>
     </div>
 </div>
