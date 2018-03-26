@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use yii\helpers\Html;
@@ -27,14 +28,6 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<!--breadcrumbs-->
-<?= Breadcrumbs::widget(
-    [
-        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-    ]);?>
-<!--end breadcrumbs-->
-
-
 <nav class="navbar main-menu navbar-default">
     <div class="container">
         <div class="menu-content">
@@ -54,32 +47,36 @@ AppAsset::register($this);
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav text-uppercase">
-                    <li><a data-toggle="dropdown" class="dropdown-toggle" href="<?= Url::toRoute(['site/index'])?>">Home</a>
+                    <li><a data-toggle="dropdown" class="dropdown-toggle" href="<?= Url::toRoute(['site/index']) ?>">Home</a>
 
                     </li>
                 </ul>
                 <div class="i_con">
                     <ul class="nav navbar-nav text-uppercase">
-                        <?php if(Yii::$app->user->isGuest):?>
-                            <li><a href="<?= Url::toRoute(['auth/login'])?>">Login</a></li>
-                            <li><a href="<?= Url::toRoute(['auth/signup'])?>">Register</a></li>
+                        <?php if (Yii::$app->user->isGuest): ?>
+                            <li><a href="<?= Url::toRoute(['auth/login']) ?>">Login</a></li>
+                            <li><a href="<?= Url::toRoute(['auth/signup']) ?>">Register</a></li>
                         <?php else: ?>
                             <?= Html::beginForm(['/auth/logout'], 'post')
                             . Html::submitButton(
                                 'Logout (' . Yii::$app->user->identity->name . ')',
-                                ['class' => 'btn btn-link logout', 'style'=>"padding-top:10px;"]
+                                ['class' => 'btn btn-link logout', 'style' => "padding-top:10px;"]
                             )
                             . Html::endForm() ?>
-                        <?php endif;?>
-
+                        <?php endif; ?>
                     </ul>
                 </div>
-
-
-
             </div>
             <!-- /.navbar-collapse -->
         </div>
+
+        <!--breadcrumbs-->
+        <?= Breadcrumbs::widget(
+            [
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]); ?>
+        <!--end breadcrumbs-->
+
     </div>
     <!-- /.container-fluid -->
 </nav>
