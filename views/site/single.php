@@ -181,12 +181,13 @@ use yii\helpers\Url;
             </div>
 
 
-
+        <!-- sidebar-->
         <?php echo $this->render('/partials/sidebar', [
             'popular' => $popular,
             'recent' => $recent,
             'categories' => $categories
         ]) ?>
+        <!--end sidebar-->
 
         </div>
     </div>

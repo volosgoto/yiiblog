@@ -48,20 +48,22 @@
                 <?php endforeach; ?>
 
 
-
+                <!--pagination-->
                 <?php
                     echo LinkPager::widget([
                         'pagination' => $pagination,
                     ]);
                 ?>
+                <!-- end pagination-->
             </div>
 
-
+            <!-- sidebar-->
             <?php echo $this->render('/partials/sidebar', [
                 'popular' => $popular,
                 'recent' => $recent,
                 'categories' => $categories
             ]) ?>
+            <!-- end sidebar-->
 
         </div>
     </div>

@@ -50,6 +50,7 @@
 
             </div>
 
+            <!-- sidebar-->
             <?php echo $this->render('/partials/sidebar', [
 //                'articles' => $data['articles'],
 //                'pagination' => $data['pagination'],
@@ -57,6 +58,7 @@
                 'recent' => $recent,
                 'categories' => $categories
             ]) ?>
+            <!-- end sidebar-->
 
 
         </div>
