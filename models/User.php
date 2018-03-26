@@ -86,4 +86,19 @@ class User extends ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey) {
         return true;
     }
+
+    public function create(){
+        return $this->save(false);
+    }
+
+
+    public static function findByEmail($email){
+        return User::find()->where(['email'=>$email])->one();
+    }
+
+
+    public function validatePassword($password)
+    {
+        return ($this->password == $password) ? true : false;
+    }
 }

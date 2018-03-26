@@ -6,9 +6,10 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\assets\AdminAsset;
+use yii\widgets\Breadcrumbs;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 //PublicAsset::register($this);
@@ -25,6 +26,12 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+
+<!--breadcrumbs-->
+<?php
+Breadcrumbs::widget(['links'=>isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : []]);
+?>
+<!--end breadcrumbs-->
 
 
 <nav class="navbar main-menu navbar-default">
@@ -46,18 +53,28 @@ AppAsset::register($this);
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav text-uppercase">
-                    <li><a data-toggle="dropdown" class="dropdown-toggle" href="index.html">Home</a>
+                    <li><a data-toggle="dropdown" class="dropdown-toggle" href="<?= Url::toRoute(['site/index'])?>">Home</a>
 
                     </li>
                 </ul>
                 <div class="i_con">
                     <ul class="nav navbar-nav text-uppercase">
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Register</a></li>
-                        <li><?php echo Html::a('Admin', ['admin/default']) ?></li>
+                        <?php if(Yii::$app->user->isGuest):?>
+                            <li><a href="<?= Url::toRoute(['auth/login'])?>">Login</a></li>
+                            <li><a href="<?= Url::toRoute(['auth/signup'])?>">Register</a></li>
+                        <?php else: ?>
+                            <?= Html::beginForm(['/auth/logout'], 'post')
+                            . Html::submitButton(
+                                'Logout (' . Yii::$app->user->identity->name . ')',
+                                ['class' => 'btn btn-link logout', 'style'=>"padding-top:10px;"]
+                            )
+                            . Html::endForm() ?>
+                        <?php endif;?>
 
                     </ul>
                 </div>
+
+
 
             </div>
             <!-- /.navbar-collapse -->
