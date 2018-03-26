@@ -28,9 +28,10 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <!--breadcrumbs-->
-<?php
-Breadcrumbs::widget(['links'=>isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : []]);
-?>
+<?= Breadcrumbs::widget(
+    [
+        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]);?>
 <!--end breadcrumbs-->
 
 
