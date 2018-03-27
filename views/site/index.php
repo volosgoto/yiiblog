@@ -24,7 +24,6 @@
 
                                 <h1 class="entry-title"><a href="<?php echo Url::toRoute(['site/view', 'id' => $article->id])?>"> <?php echo $article->title; ?> </a></h1>
 
-
                             </header>
                             <div class="entry-content">
                                 <p>

@@ -64,12 +64,13 @@ class AuthController extends Controller {
     public function actionTest() {
         $user = User::findOne(1);
 
-        Yii::$app->user->logout();
-//        Yii::$app->user->login($user);
-        if (Yii::$app->user->isGuest) {
-            echo 'Авторизирован';
-        } else {
-            echo 'Не авторизирован';
-        }
+//        Yii::$app->user->logout();
+        Yii::$app->user->login($user);
+//        if (Yii::$app->user->isGuest) {
+//            echo 'Авторизирован';
+//        } else {
+//            echo 'Не авторизирован';
+//        }
+        debug (Yii::$app->user->identity->isAdmin);
     }
 }
