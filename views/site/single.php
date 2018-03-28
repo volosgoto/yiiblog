@@ -174,18 +174,32 @@ use yii\helpers\Url;
                 <?php endif; ?>
 
 
-                <div class="leave-comment"><!--leave comment-->
+                <!--leave comment-->
+                <div class="leave-comment">
                     <h4>Leave a reply</h4>
+
+                    <!-- comment form-->
+                    <?php $form = \yii\widgets\ActiveForm::begin([
+                        'action'=>['site/comment', 'id'=>$article->id],
+                        'options'=>['class'=>'form-horizontal contact-form', 'role'=>'form']])
+                    ?>
+
                     <form class="form-horizontal contact-form" role="form" method="post" action="#">
                         <div class="form-group">
                             <div class="col-md-12">
-										<textarea class="form-control" rows="6" name="message"
-                                                  placeholder="Write Massage"></textarea>
+
+                                <?= $form->field($commentForm, 'comment')->textarea(['class'=>'form-control','placeholder'=>'Write Message'])->label(false)?>
+
                             </div>
                         </div>
                         <a href="#" class="btn send-btn">Post Comment</a>
-                    </form>
-                </div><!--end leave comment-->
+
+                   <?php \yii\widgets\ActiveForm::end() ?>
+                        <!-- comment form-->
+
+                </div>
+                <!--end leave comment-->
+
             </div>
 
 
