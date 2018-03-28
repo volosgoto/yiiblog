@@ -102,8 +102,8 @@ class SiteController extends Controller {
         $popular = Article::getPopular();
         $recent = Article::getRecent();
         $categories = Category::getAll();
-       // $comments = $article->getArticleComments();
-        //$commentForm = new CommentForm();
+        $comments = $article->getArticleComments();
+        $commentForm = new CommentForm();
 
         $article->viewedCounter();
 
@@ -112,8 +112,8 @@ class SiteController extends Controller {
             'popular'=>$popular,
             'recent'=>$recent,
             'categories'=>$categories,
-        //    'comments'=>$comments,
-            //'commentForm'=>$commentForm
+            'comments'=>$comments,
+            'commentForm'=>$commentForm
         ]);
     return $this->render('single');
     }

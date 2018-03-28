@@ -83,7 +83,10 @@ use yii\helpers\Url;
                         </div>
                     </div>
                 </div><!--blog next previous end-->
-                <div class="related-post-carousel"><!--related post carousel-->
+
+
+                <!--related post carousel-->
+                <div class="related-post-carousel">
                     <div class="related-heading">
                         <h4>You might also like</h4>
                     </div>
@@ -141,29 +144,34 @@ use yii\helpers\Url;
                         </div>
                     </div>
                 </div><!--related post carousel-->
-                <div class="bottom-comment"><!--bottom comment-->
-                    <h4>3 comments</h4>
-
-                    <div class="comment-img">
-                        <img class="img-circle" src="assets/images/comment-img.jpg" alt="">
-                    </div>
-
-                    <div class="comment-text">
-                        <a href="#" class="replay btn pull-right"> Replay</a>
-                        <h5>Rubel Miah</h5>
-
-                        <p class="comment-date">
-                            December, 02, 2015 at 5:57 PM
-                        </p>
 
 
-                        <p class="para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                            diam nonumy
-                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                            voluptua. At vero eos et cusam et justo duo dolores et ea rebum.</p>
-                    </div>
-                </div>
-                <!-- end bottom comment-->
+                <?php if (!empty($comments)): ?>
+                    <?php foreach ($comments as $comment): ?>
+                        <!-- bottom comment-->
+                        <div class="bottom-comment"><!--bottom comment-->
+                            <h4>3 comments</h4>
+
+                            <div class="comment-img">
+                                <img class="img-circle" src="<?php echo $comment->user->image ?>" alt="">
+                            </div>
+
+                            <div class="comment-text">
+                                <a href="#" class="replay btn pull-right"> Replay</a>
+                                <h5><?php echo $comment->user->name ?></h5>
+
+                                <p class="comment-date">
+                                    <?php echo $comment->getDate() ?>
+                                </p>
+
+                                <p class="para">
+                                    <?php echo $comment->text; ?>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- end bottom comment-->
+                    <?php endforeach; ?>
+                <?php endif; ?>
 
 
                 <div class="leave-comment"><!--leave comment-->

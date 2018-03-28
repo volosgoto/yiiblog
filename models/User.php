@@ -101,4 +101,13 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return ($this->password == $password) ? true : false;
     }
+
+
+    public function getImage()
+    {
+//        return ($this->image) ? '/uploads/' . $this->image : '/images/no-image.png';
+//        return ($this->image) ? $this->image : '/no-image.png';
+        return 'user image';
+    }
+
 }
