@@ -146,6 +146,7 @@ use yii\helpers\Url;
                 </div><!--related post carousel-->
 
 
+<!--                --><?php // debug ($comments); die;?>
                 <?php if (!empty($comments)): ?>
                     <?php foreach ($comments as $comment): ?>
                         <!-- bottom comment-->
@@ -187,13 +188,11 @@ use yii\helpers\Url;
                     <form class="form-horizontal contact-form" role="form" method="post" action="#">
                         <div class="form-group">
                             <div class="col-md-12">
-
                                 <?= $form->field($commentForm, 'comment')->textarea(['class'=>'form-control','placeholder'=>'Write Message'])->label(false)?>
 
                             </div>
                         </div>
-                        <a href="#" class="btn send-btn">Post Comment</a>
-
+                        <button type="submit" class="btn send-btn">Post Comment</button>
                    <?php \yii\widgets\ActiveForm::end() ?>
                         <!-- comment form-->
 

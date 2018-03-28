@@ -103,6 +103,8 @@ class SiteController extends Controller {
         $recent = Article::getRecent();
         $categories = Category::getAll();
         $comments = $article->getArticleComments();
+
+//        debug($comments); die;
         $commentForm = new CommentForm();
 
         $article->viewedCounter();
