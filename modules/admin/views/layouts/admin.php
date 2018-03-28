@@ -41,6 +41,7 @@ AdminAsset::register($this);
             ['label' => 'Admin Main', 'url' => ['/admin/default/index']],
             ['label' => 'Articles', 'url' => ['/admin/article/index']],
             ['label' => 'Categories', 'url' => ['/admin/category/index']],
+            ['label' => 'Commentaries', 'url' => ['/admin/comment/index']],
             ['label' => 'Tag', 'url' => ['/admin/tag/index']],
 
         ],
