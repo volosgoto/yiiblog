@@ -20,6 +20,8 @@ AdminAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+
+
     <?php $this->head() ?>
 </head>
 <body>
@@ -66,6 +68,22 @@ AdminAsset::register($this);
 </footer>
 
 <?php $this->endBody() ?>
+
+
+
+
+
+
+<!--<script>-->
+<!--    $(document).ready(function(){-->
+<!--        CKEDITOR.replaceAll();-->
+<!--        // var editor = CKEDITOR.replaceAll();-->
+<!--        // CKFinder.setupCKEditor( editor );-->
+<!--    })-->
+<!--</script>-->
+
+
+
 </body>
 </html>
 <?php $this->endPage() ?>

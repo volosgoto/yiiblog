@@ -4,7 +4,7 @@
 
 // alert('Hello');
 
-;(function ($) {
+(function ($) {
     'use strict'; // use strict to start
 
     /* === Stickit === */
