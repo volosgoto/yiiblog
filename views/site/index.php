@@ -35,8 +35,8 @@
                                 </div>
                             </div>
                             <div class="social-share">
-                                <span class="social-share-title pull-left text-capitalize">By <a
-                                            href="#">Rubel</a> <?php echo $article->getDate() ?></span>
+                                <span class="social-share-title pull-left text-capitalize">Автор: <a
+                                            href="#"><?php echo $article->author->name; ?>.</a> <br> Дата: <?php echo $article->getDate() ?></span>
                                 <ul class="text-center pull-right">
                                     <li><a class="s-facebook" href="#"><i class=""></i>Просмотров: </a>
                                     </li> <?php echo (int)$article->viewed ?>
@@ -48,6 +48,7 @@
 
 
                 <!--pagination-->
+
                 <?php
                     echo LinkPager::widget([
                         'pagination' => $pagination,

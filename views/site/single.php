@@ -24,14 +24,14 @@ use yii\helpers\Url;
                                 <?php echo $article->content ?>
                             </p>
                         </div>
-                        <div class="decoration">
-                            <a href="#" class="btn btn-default">Decoration</a>
-                            <a href="#" class="btn btn-default">Decoration</a>
-                        </div>
+<!--                        <div class="decoration">-->
+<!--                            <a href="#" class="btn btn-default">Decoration</a>-->
+<!--                            <a href="#" class="btn btn-default">Decoration</a>-->
+<!--                        </div>-->
 
                         <div class="social-share">
 							<span
-                                class="social-share-title pull-left text-capitalize">By Rubel <?php echo $article->getDate() ?></span>
+                                class="social-share-title pull-left text-capitalize">By <?php echo $article->author->name; ?> <?php echo $article->getDate() ?></span>
                             <ul class="text-center pull-right">
                                 <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -42,6 +42,7 @@ use yii\helpers\Url;
                         </div>
                     </div>
                 </article>
+
                 <div class="top-comment"><!--top comment-->
                     <img src="/images/comment.jpg" class="pull-left img-circle" alt="">
                     <h4>Rubel Miah</h4>
@@ -150,14 +151,17 @@ use yii\helpers\Url;
                     <?php foreach ($comments as $comment): ?>
                         <!-- bottom comment-->
                         <div class="bottom-comment"><!--bottom comment-->
-                            <h4>3 comments</h4>
+                            <h4>Коментарии</h4>
 
                             <div class="comment-img">
                                 <img class="img-circle" src="<?php echo $comment->user->image ?>" alt="">
                             </div>
 
                             <div class="comment-text">
-                                <a href="#" class="replay btn pull-right"> Replay</a>
+
+                                <!-- Доработать функционал Ответить-->
+
+                                <a href="#" class="replay btn pull-right"> Ответить</a>
                                 <h5><?php echo $comment->user->name ?></h5>
 
                                 <p class="comment-date">

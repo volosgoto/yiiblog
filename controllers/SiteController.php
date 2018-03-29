@@ -72,22 +72,6 @@ class SiteController extends Controller {
             'recent' => $recent,
             'categories' => $categories
         ]);
-
-
-//        $popular = Article::find()->orderBy('viewed desc')->limit('3')->all();
-//        $recent = Article::find()->orderBy('date asc')->limit('4')->all();
-//
-//        $categories = Category::find()->all();
-//
-//        return $this->render('index', compact(
-//            'articles',
-//            'pagination',
-//            'popular',
-//            'recent',
-//            'categories',
-//            'data'
-//
-//        ));
     }
 
 
