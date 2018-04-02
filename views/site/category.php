@@ -33,7 +33,7 @@
                                         </p>
                                     </div>
                                     <div class="social-share">
-                                        <span class="social-share-title pull-left text-capitalize">By Rubel <?php echo $article->getDate() ?></span>
+                                        <span class="social-share-title pull-left text-capitalize">By <?php echo $article->author->name; ?> <?php echo $article->getDate() ?></span>
 
                                     </div>
                                 </div>

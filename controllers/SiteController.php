@@ -72,6 +72,21 @@ class SiteController extends Controller {
             'recent' => $recent,
             'categories' => $categories
         ]);
+
+
+
+//        $query = Article::find()->where(['status' => 1]);
+//        $countQuery = clone $query;
+//        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+//        $models = $query->offset($pages->offset)
+//            ->limit($pages->limit)
+//            ->all();
+//
+//        return $this->render('index', [
+//            'articles' => $models,
+//            'pagination' => $pages,
+//        ]);
+
     }
 
 

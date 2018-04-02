@@ -165,10 +165,10 @@ class Article extends \yii\db\ActiveRecord
         $articles = $query->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-        
+
         $data['articles'] = $articles;
         $data['pagination'] = $pagination;
-        
+
         return $data;
     }
     

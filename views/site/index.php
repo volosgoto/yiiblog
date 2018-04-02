@@ -9,6 +9,9 @@
         <div class="row">
             <div class="col-md-8">
 
+
+<!--                --><?php //debug($articles); die; ?>
+
                 <?php foreach ($articles as $article): ?>
                     <article class="post">
                         <div class="post-thumb">
