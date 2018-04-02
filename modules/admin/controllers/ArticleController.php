@@ -74,7 +74,7 @@ class ArticleController extends Controller
         $model = new Article();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->category_id = 5; // сделать дропдаун выбора категории при создании
+            $model->category_id = 5; // сделать дроп дан выбора категории
             $model->saveArticle();
 
             return $this->redirect(['view', 'id' => $model->id]);

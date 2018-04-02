@@ -60,7 +60,7 @@ class SiteController extends Controller {
      * @return string
      */
     public function actionIndex() {
-        $data = Article::getAll(1);
+        $data = Article::getAll(3);
         $popular = Article::getPopular();
         $recent = Article::getRecent();
         $categories = Category::getAll();

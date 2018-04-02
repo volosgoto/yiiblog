@@ -19,6 +19,8 @@ use mihaildev\ckeditor\CKEditor;
 
         <?= $form->field($model, 'category_id')->textInput(['maxlength' => true]) ?>
 
+
+
         <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
         <?= $form->field($model, 'content')->widget(CKEditor::className(),[
